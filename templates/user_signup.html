@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="icon" href="{{ url_for('static',filename='assets/img/p5.ico')} }">
+    <link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/responsiveslides.css">
+    <style>
+        body {
+            color: #000;
+            overflow-x: hidden;
+            height: 100%;
+            background-color: #B0BEC5;
+            background-repeat: no-repeat
+        }
+
+        .card0 {
+            box-shadow: 4px 6px 12px #757575;
+            border-radius: 0px
+        }
+
+        .card2 {
+            margin: 0px 40px
+        }
+
+        .image {
+            width: 360px;
+            height: 280px
+        }
+
+        .text-sm {
+            font-size: 14px !important
+        }
+
+        ::placeholder {
+            color: #BDBDBD;
+            opacity: 1;
+            font-weight: 300
+        }
+
+        :-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300
+        }
+
+        ::-ms-input-placeholder {
+            color: #BDBDBD;
+            font-weight: 300
+        }
+
+        input,
+        textarea {
+            padding: 10px 12px 10px 12px;
+            border: 1px solid lightgrey;
+            border-radius: 2px;
+            margin-bottom: 5px;
+            margin-top: 2px;
+            width: 100%;
+            box-sizing: border-box;
+            color: #2C3E50;
+            font-size: 14px;
+            letter-spacing: 1px
+        }
+
+        input:focus,
+        textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #304FFE;
+            outline-width: 0
+        }
+
+        button:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0
+        }
+
+        a{
+            color: inherit;
+            cursor: pointer
+        }
+
+        .btn-blue {
+            background-color: #1A237E;
+            width: 150px;
+            color: #fff;
+            border-radius: 2px
+        }
+        .btn-blue > a{
+            color: white;
+            text-decoration: none;
+        }
+        .btn-blue:hover {
+            background-color: red;
+            cursor: pointer
+        }
+        .bg-blue {
+            color: #fff;
+            background-color: #1A237E
+        }
+
+        @media screen and (max-width: 991px) {
+            .image {
+                width: 300px;
+                height: 220px
+            }
+
+            .border-line {
+                border-right: none
+            }
+
+            .card2 {
+                border-top: 1px solid #EEEEEE !important;
+                margin: 0px 15px
+            }
+        }
+        .animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+    </style>
+</head>
+<body  >
+<div class="display-2 ml-5" style="opacity: 0.5;"><a href="/" style="text-decoration: none;">SWISS Bank</a></div>
+    <div class="animate-bottom container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto mt-1">
+        <div class="card card0 border-0">
+            <h3 class="text-muted ml-2">Provide your details..!</h3>
+            <form method="POST" >
+                {% csrf_token %}
+            <div class="row d-flex ml-3">
+               
+                <div class="col-lg-6 mt-4">
+                    <label for="psw"><b>First Name</b></label>
+                    <input type="text" placeholder="Enter First Name" name="fname" required>
+                    
+                    <label for="psw"><b>Last Name</b></label>
+                    <input type="text" placeholder="Enter Last Name" name="lname" required>
+                    
+                    <label for="psw"><b>Father Name</b></label>
+                    <input type="text" placeholder="Enter Father Name" name="dadname" required>
+                    
+                     <label for="psw"><b>Mother Name</b></label>
+                    <input type="text" placeholder="Enter Mother Name" name="momname" required><br/>
+
+                    <label class="mt-2" for="gender"><b>Gender</b></label>
+                    <select id="gender" name="gender">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select> 
+                    <hr>
+                    <label for="psw"><b>Address</b></label>
+                    <input type="text" placeholder="Enter Address" name="address" required>
+                    <label for="psw"><b>State</b></label>
+                    <input type="text" placeholder="Enter State" name="state" required>
+                    <label for="psw"><b>City</b></label>
+                    <input type="text" placeholder="Enter City" name="city" required>
+                    
+                    
+                </div>
+                    <div class="col-lg-6 ">
+                                <hr>
+                                <label for="psw"><b>Date Of Birth</b></label>
+                                <input type="date" placeholder="Enter Date Of Birth" name="dob" required>
+                                <label for="psw"><b>Phone Number</b></label>
+                                <input type="text" placeholder="Enter Phone Number" name="phno" required>
+                                <label for="psw"><b>Aadhar Number</b></label>
+                                <input type="text" placeholder="Enter Aadhar Number" name="aadhar" required>
+                                <label for="email"><b>Email</b></label>
+                                <input type="text" placeholder="Enter Email" name="email" required>
+
+                                <label for="psw"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" name="password" required>
+
+                                <label for="psw-repeat"><b>Confirm Password</b></label>
+                                <input type="password" placeholder="Repeat Password" name="confirmPassword" required>
+                                
+                                
+                                
+                                <!-- <a href="forget.html" data-toggle="modal" data-target="#exampleModalCenter" class="ml-auto mb-0 text-sm">Reset Password?</a> -->
+                            </div>
+                           
+                            
+                            <div class="mb-2 mt-3 "> <button type="submit" class="btn btn-block btn-primary">Signup</button> <br><br>
+                                <div class="row text-muted ml-2">Already have an account?  <a href="/login" class="text-primary">Login</a></div>
+                            </div>   
+                        
+                        
+                    </div>
+                    
+            </div>
+            </form>
+
+            </div>
+        </div>
+
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

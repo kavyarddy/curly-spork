@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="icon" href="{ url_for('static', filename='/assets/img/logo.png') }">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+        .navbg{
+            background: linear-gradient( -40deg,#006666,#00ccff);
+            border-bottom: 1px solid white;
+        }
+        .sidebar{
+            background: linear-gradient(135deg,#006666,#003366);;
+            height: 92vh;
+        }
+        .sidebar > h1 {
+            color: white;
+        }
+        .sidebarA > a{
+            color: white;
+            font-size: 1.15em;
+            border-bottom: 0.5px solid white;
+        }
+        .sidebarA > a:hover{
+            border: none;
+            background: linear-gradient(45deg,#33cccc,#006666);
+            border-radius: 20px;
+        }
+        .mutedTxt{
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .cont{
+            background:#003366;
+        }
+        #conthead{
+            color: white;
+        }
+      .p1{
+        color: green;
+        font-size: 20px;
+      }
+      .p2{
+        color: red;
+        font-size: 20px;
+      }
+       
+
+        #myDiv {
+          display: none;
+        }
+    </style>
+</head>
+<body onload="myFunction()" >
+
+<div id="loader"></div>
+
+<div id="myDiv" >
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbg">
+        <img class="ml-4" height="30px" src="{% static 'bank_logo.jpg' %}" alt="logo"> &nbsp; 
+        <div class="collapse navbar-collapse" id="navbarNav"></div>
+        <a href="/login"><i data-toggle="modal" data-target="#exampleModalCenter" class="fa fa-sign-out" style="font-size:36px;color:white; cursor: pointer;"></i></a>
+    </nav>
+
+    <div class="row">
+        <div class="col col-lg-2 col-md-2 col-sm-4 sidebar">
+            <h1 class="text-center mt-5">Swizz Bank</h1> <br><br>
+            <div class="col sidebarA">
+                <a href="/home" class="nav-link"><ion-icon class="mr-2" name="pie-chart-sharp"></ion-icon>Home</a><br>
+                <a href="/passbook" class="nav-link"><ion-icon class="mr-2" name="download"></ion-icon>m-passbook</a><br>
+                <a href="/deposit" class="nav-link"><ion-icon class="mr-2" name="arrow-back-circle"></ion-icon>Deposit Money</a><br>
+                <a href="/transfer" class="nav-link"><ion-icon class="mr-2" name="arrow-redo-circle"></ion-icon>Money Transfer</a><br>
+                <a href="/balance" class="nav-link"><ion-icon class="mr-2" name="wallet"></ion-icon>Balance Enquiry</a><br>
+                <a href="/contactus" class="nav-link"><ion-icon class="mr-2" name="call"></ion-icon>Contact</a><br>
+            </div>
+        </div>
+        <div class="container col-sm-8 mb-5">
+            <div class="col">
+                <h1 class="display-3 mt-5">Welcome </h1><br>
+                <h2 class="text-muted mutedTxt">Start exploring our bank</h2><br>
+      
+      <div class="cont">
+        <h1 id="conthead">Transfer Money</h1>
+      <div class="card ">
+         <table>
+        <form action="" method="POST">
+            {% csrf_token %}
+        <tr height="100px">
+            <th style="font-size:30PX;">Transfer to:</th>
+        </tr>
+        <tr height="40px">
+            <th>Account No:</th>
+            <td><input type="number" id="form3Example3" name="accno"/></td>
+        </tr>
+            <tr height="40px">
+                <th>Amount to be transfered:</th>
+                <td><input type="number" id="form3Example3" name="transferamount"/></th>
+            </tr>
+        
+               </table>
+           <div class="buttonclass">
+                    <button type="submit" name="trans" class="btn btn-primary btn-sm bg-dark btninner" style="width: 150px; border-radius: 20px;height:40px"><strong>Send</strong></button>
+                </div>
+            </form>
+      </div>
+    </div>
+    <p class="p1">{{success}}</p>
+    <p class="p2">{{failure}}</p>
+            </div>
+        </div>
+        
+    </div>
+    
+   
+</div>
+
+<script>
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage,1);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
